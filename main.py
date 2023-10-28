@@ -38,7 +38,7 @@ class problemas(ttk.Frame):
         padding=5,
         amountused=25,
         metertype="semi",
-        subtext="miles per hour",
+        subtext="Calificacion",
         interactive=True,
         )
         meter.pack()
@@ -73,8 +73,16 @@ no puede ser 0, 1, 8 o 9, ¿cuantos números telefónicos pares pueden existir e
        
 
     def problema2 (self):
+        def calcular():
+            mes = set(entrada.get())
+            conjunto_b = set('abcdefghij')
+            interseccion = mes.intersection(conjunto_b)
+            label_pasos = ttk.Label(ventana_nueva, text=f"Primer paso definir primer conjunto \n Conjunto A: {mes} \n Segundo definir el segundo conjunto \n Conjunto B: {conjunto_b} \n Paso 3 calcular la intersección \n la intersección de los dos conjuntos es {interseccion}")
+            label_pasos.pack(pady=20)    
+
+
         ventana_nueva = ttk.Toplevel("superhero")
-        label_Frame_problema = ttk.LabelFrame(ventana_nueva,text="Problema1", bootstyle= "SUCCESS")
+        label_Frame_problema = ttk.LabelFrame(ventana_nueva,text="Problema2", bootstyle= "SUCCESS")
         label_Frame_problema.pack(ipadx=100)
 
         label_problema = ttk.Label(label_Frame_problema, text=""" Cual es el conjunto resultante de la Intersección de los conjuntos conformados por A={x/x letras que conforman el
@@ -82,13 +90,33 @@ nombre del mes en el que estamos} B = {x/x primeras 10 letras del abecedario}"""
         label_problema.pack()
 
         frame_formulario = ttk.Frame(ventana_nueva)
-        label_entry = ttk.Label(ventana_nueva, text="Ingrese el mes en el que estamos: ")
+        frame_formulario.pack()
+        label_entry = ttk.Label(frame_formulario, text="Ingrese el mes en el que estamos: ")
         label_entry.pack(side=LEFT, pady=20)
-        entrada = ttk.Entry(ventana_nueva)
+        entrada = ttk.Entry(frame_formulario)
         entrada.pack(side=LEFT)
+        boton_calcular = ttk.Button(frame_formulario, text="Calcular problema", bootstyle= "SUCCESS", command=calcular)
+        boton_calcular.pack(side=LEFT)
+
+        
 
     def problema3 (self):
         ventana_nueva = ttk.Toplevel("superhero")
+        label_Frame_problema = ttk.LabelFrame(ventana_nueva,text="Problema3", bootstyle= "SUCCESS")
+        label_Frame_problema.pack(ipadx=100)
+        label_problema = ttk.Label(label_Frame_problema, text=""" Por medio del Algoritmo de Euclides calcular el MCD de 24 – 62""")
+        label_problema.pack()
+
+        constantes= 24
+        constantes_2 = 62
+        a = 24
+        b = 62
+
+        while b!=0:
+            a,b = b, a%b
+
+        label_pasos = ttk.Label(ventana_nueva, text=f"Paso 1 Dividir entre {constantes},{constantes_2} hasta que obtengamos como reiduo 0 y el cociente sera nuestro maximo comun divisor \n Paso 2: Resultado, MCD de {constantes} y {constantes_2} es {a}")
+        label_pasos.pack(pady=20)
 
 
 
